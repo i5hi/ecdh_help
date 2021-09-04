@@ -1,0 +1,16 @@
+{
+  "name": "ecdsa_help",
+  "version": "1.0.0",
+  "description": "comparing ecdsa shared secret spec against rust implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r index.js --exit"
+  },
+  "author": "ravi5hi",
+  "license": "MIT",
+  "dependencies": {
+    "bip32": "^2.0.6",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.1"
+  }
+}
