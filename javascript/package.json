@@ -4,7 +4,7 @@
   "description": "comparing ecdsa shared secret spec against rust implementation",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r index.js --exit"
+    "test": "mocha index.js --exit"
   },
   "author": "ravi5hi",
   "license": "MIT",
