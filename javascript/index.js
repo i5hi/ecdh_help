@@ -36,9 +36,13 @@ function calculate_shared_secret(ecdsa_keys) {
   return shared_secret.toString("hex");
 }
 
-let xkeys = {
+let alice_xkeys = {
   xprv: "xprvA3nH6HUGxEUZbeZ2AGbsuVcsoEsa269AmySR95i3E81mwY3TmWoxoGUUqB59p8kjS6wb3Ppg2c9y3vKyG2aecijRpJfGWMxVX4swXwMLaSB", 
   xpub: "xpub6GmdVo1Anc2rp8dVGJ8tGdZcMGi4RYs29CN1wU7enTYkpLNcK48DM4nxgTLoSCEfGYGJZ6JqPwCpSnoGfEwDUU6tszeSUcdEqntoqqRCLhm"
+};
+let bob_xkeys = {
+  xprv: "xprvA19Tn2HMUhBxgBux1vuQFJ8dqn1CHoNJfEGdfW86jbWQJE1t1RXsaBit71vbw8QKhKGZUyo4yGpA3WfsgTxS3MwrTSjuorWy3ajM4VLhvDM", 
+  xpub: "xpub6E8pBXpFK4kFtfzR7xSQcS5NPoqghG6A2TCETtXiHw3PB2M2Yxr87z3MxFmMfhkPjdhdNPLXwEZzPKqYueiDXgREhVqCkdoxYMCub9cjhoN"
 };
 
 let alice_pair =  {
@@ -57,10 +61,15 @@ let expected_shared_secret = "49ab8cb9ba741c6083343688544861872e3b73b3d094b09e36
 
 
 it("should extract_ecdsa_pair from extended key pair", async function () {
-  let key_pair = extract_ecdsa_pair(xkeys);
+  let key_pair = extract_ecdsa_pair(alice_xkeys);
   if (key_pair instanceof Error) throw key_pair;
   expect(key_pair.public_key).to.equal(alice_pair.public_key);
   expect(key_pair.private_key).to.equal(alice_pair.private_key);
+
+  key_pair = extract_ecdsa_pair(bob_xkeys);
+  if (key_pair instanceof Error) throw key_pair;
+  expect(key_pair.public_key).to.equal(bob_pair.public_key);
+  expect(key_pair.private_key).to.equal(bob_pair.private_key);
 });
 it("should generate_shared_secret from alice public_key and bob private_key", async function () {
   
