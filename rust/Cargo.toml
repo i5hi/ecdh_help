@@ -6,5 +6,15 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-secp256k1 = {version = "0.20.1", features = ["rand"]}
-bip32 = "0.2.1"
+base32 = "0.4.0"
+base64 = "0.13.0"
+hex = "0.4.3"
+
+[dependencies.secp256k1]
+features = ["rand", "bitcoin_hashes", "global-context", "rand-std"]
+version = "0.22.0"
+
+
+[dependencies.bitcoin]
+features = ["rand", "base64"]
+version = "0.28.0"
