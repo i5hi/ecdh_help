@@ -1,6 +1,6 @@
-# ecdsa_help
+# ecdh_help
 
-We are attempting to use secp256k1 to create an ecdsa shared_secret.
+We are attempting to use secp256k1 to create an ecdh shared_secret.
 
 Three implementations, one in rust, one in javascript and one in python, using the same keys are currently producing different results. 
 
